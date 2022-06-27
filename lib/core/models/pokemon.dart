@@ -5,14 +5,13 @@ class Pokemon {
     required this.data,
   });
 
-  factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
-        data: List<Data>.from(
-          json['pokemon'].map(
-            // ignore: unnecessary_lambdas
-            (x) => Data.fromJson(x),
-          ),
-        ),
-      );
+  factory Pokemon.fromJson(Map<String, dynamic> json) {
+    final data = (json['pokemon'] as List)
+        .map((listing) => Data.fromJson(listing))
+        .toList();
+
+    return Pokemon(data: data);
+  }
 }
 
 class Data {
@@ -33,13 +32,20 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) {
+    final id = json['id'];
+    final name = json['name'];
+    final img = json['img'];
+    final type = json['type'].cast<String>();
+    final height = json['height'];
+    final weight = json['weight'];
+
     return Data(
-      id: json['id'],
-      name: json['name'],
-      img: json['img'],
-      type: json['type'].cast<String>(),
-      height: json['height'],
-      weight: json['weight'],
+      id: id,
+      name: name,
+      img: img,
+      type: type,
+      height: height,
+      weight: weight,
     );
   }
 }
