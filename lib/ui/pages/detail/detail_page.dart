@@ -48,7 +48,7 @@ class _DetailPageState extends State<DetailPage> {
       children: <Widget>[
         Container(
             alignment: Alignment.center,
-            height: size.height / 1.8,
+            height: size.height / 1.9,
             width: size.width / 1.2,
             decoration: BoxDecoration(
               color: colorItem(widget.type),
