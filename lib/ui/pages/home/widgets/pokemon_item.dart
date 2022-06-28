@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:application/core/constants/constants.dart';
+import 'package:application/ui/pages/home/index.dart';
 
 class PokemonItem extends StatelessWidget {
   final String name;
@@ -19,16 +17,16 @@ class PokemonItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: InkWell(
+      padding: const EdgeInsets.all(15.0),
+      child: InkWell(
           onTap: function,
           child: Column(
             children: <Widget>[
               _buildingPokemonItem(),
               _namePokemon(),
             ],
-          ),
-        ));
+          )),
+    );
   }
 
   Widget _buildingPokemonItem() {

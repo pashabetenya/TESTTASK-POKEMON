@@ -1,4 +1,4 @@
-import 'package:application/ui/widgets/home/index.dart';
+import 'package:application/ui/pages/home/index.dart';
 
 class TitleText extends StatelessWidget {
   final String titleText1st;

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:application/core/constants/constants.dart';
+import 'package:application/ui/pages/detail/index.dart';
 
 class DescriptionText extends StatelessWidget {
   final String height;

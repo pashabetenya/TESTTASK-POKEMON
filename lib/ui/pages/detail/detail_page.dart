@@ -61,7 +61,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ],
             ),
-            child: DescriptionItem(
+            child: DetailItem(
               name: widget.name,
               height: widget.height,
               weight: widget.weight,

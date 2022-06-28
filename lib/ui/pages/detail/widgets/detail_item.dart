@@ -1,8 +1,6 @@
 import 'package:application/ui/pages/detail/index.dart';
-import 'package:application/ui/widgets/detail/description_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
-class DescriptionItem extends StatelessWidget {
+class DetailItem extends StatelessWidget {
   final String name;
   final String height;
   final String weight;
@@ -10,7 +8,7 @@ class DescriptionItem extends StatelessWidget {
   final int numb;
   final int id;
 
-  const DescriptionItem({
+  const DetailItem({
     Key? key,
     required this.name,
     required this.height,

@@ -1,19 +1,3 @@
-class Pokemon {
-  final List<Data> data;
-
-  Pokemon({
-    required this.data,
-  });
-
-  factory Pokemon.fromJson(Map<String, dynamic> json) {
-    final data = (json['pokemon'] as List)
-        .map((listing) => Data.fromJson(listing))
-        .toList();
-
-    return Pokemon(data: data);
-  }
-}
-
 class Data {
   final int id;
   final String name;
