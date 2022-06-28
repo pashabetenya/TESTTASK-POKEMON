@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'pokemon.g.dart';
+
+@JsonSerializable()
 class Data {
   final int id;
   final String name;
@@ -15,21 +19,7 @@ class Data {
     required this.weight,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) {
-    final id = json['id'];
-    final name = json['name'];
-    final img = json['img'];
-    final type = json['type'].cast<String>();
-    final height = json['height'];
-    final weight = json['weight'];
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-    return Data(
-      id: id,
-      name: name,
-      img: img,
-      type: type,
-      height: height,
-      weight: weight,
-    );
-  }
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
