@@ -18,6 +18,25 @@ class _HomePageState extends State<HomePage> {
     init();
   }
 
+  Future init() async {
+    final data = await PokemonRepository().fetchPokemon(keyboard);
+
+    setState(() => this.data = data);
+  }
+
+  Future search(String query) async {
+    final data = await PokemonRepository().fetchPokemon(query);
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      keyboard = query;
+      this.data = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,53 +90,23 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildList() {
     return Expanded(
-        child: GridView.builder(
-            itemCount: data.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.8,
-            ),
-            itemBuilder: (context, index) {
-              final model = data[index];
-              final color = data[index].type[0];
-              return PokemonItem(
-                name: model.name,
-                type: color,
-                numb: model.id,
-                function: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                              name: model.name,
-                              height: model.height,
-                              weight: model.weight,
-                              type: model.type[0],
-                              numb: model.id,
-                              id: model.id,
-                            )),
-                  );
-                },
-              );
-            }));
-  }
-
-  Future init() async {
-    final data = await PokemonRepository().fetchPokemon(keyboard);
-
-    setState(() => this.data = data);
-  }
-
-  Future search(String query) async {
-    final data = await PokemonRepository().fetchPokemon(query);
-
-    if (!mounted) {
-      return;
-    }
-
-    setState(() {
-      keyboard = query;
-      this.data = data;
-    });
+      child: GridView.builder(
+        itemCount: data.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8,
+        ),
+        itemBuilder: (context, index) {
+          final model = data[index];
+          return PokemonItem(
+            name: model.name,
+            height: model.height,
+            weight: model.weight,
+            numb: model.id,
+            type: model.type[0],
+          );
+        },
+      ),
+    );
   }
 }
