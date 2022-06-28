@@ -1,4 +1,6 @@
+import 'package:application/core/bloc/home/view/view_bloc.dart';
 import 'package:application/ui/pages/home/index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -71,36 +73,57 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildList() {
     return Expanded(
-        child: GridView.builder(
-      itemCount: data.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.8,
-      ),
-      itemBuilder: (context, index) {
-        final model = data[index];
-        final color = data[index].type[0];
-        return PokemonItem(
-          name: model.name,
-          type: color,
-          numb: model.id,
-          function: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => DetailPage(
-                        name: model.name,
-                        height: model.height,
-                        weight: model.weight,
-                        type: model.type[0],
-                        numb: model.id,
-                        id: model.id,
-                      )),
+      child: BlocProvider<ViewBloc>(
+        create: (context) => ViewBloc(),
+        child: BlocBuilder<ViewBloc, ViewState>(
+          builder: (context, state) {
+            if (state is ViewInitState) {
+              BlocProvider.of<ViewBloc>(context).add(
+                FetchPokemonEvent(),
+              );
+            } else if (state is GotPokemonState) {
+              return GridView.builder(
+                itemCount: data.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                ),
+                itemBuilder: (context, index) {
+                  final model = data[index];
+                  final color = data[index].type[0];
+                  return PokemonItem(
+                    name: model.name,
+                    type: color,
+                    numb: model.id,
+                    function: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(
+                            name: model.name,
+                            height: model.height,
+                            weight: model.weight,
+                            type: model.type[0],
+                            numb: model.id,
+                            id: model.id,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
+            }
+            return const Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           },
-        );
-      },
-    ));
+        ),
+      ),
+    );
   }
 
   Future init() async {
