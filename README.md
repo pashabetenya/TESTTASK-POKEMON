@@ -35,6 +35,32 @@ Result:
 
 
 
+## Application Preview.
+
+<!-- <table>
+  <tr>
+    <td><img src='screenshots/app_preview.gif' width="200"/><td>
+  </tr>
+</table> -->
+<table>
+  <tr>
+    <th>Home Page</th>
+    <th>Detail</th>
+    <th>Search</th>
+  </tr>
+  <tr>
+    <td><img src='photos/photo1st.png'/></td>
+    <td><img src='photos/photo2nd.png'/></td>
+    <td><img src='photos/photo3th.png'/></td>
+  </tr>
+  
+</table>
+
+<br>
+
+
+
+
 ## What I supposedly accomplished, and what is planned in the future.
 
 - Design:
