@@ -24,9 +24,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: kGreen,
         elevation: 0.00,
-        actions: [
-          _shareButton(),
-        ],
       ),
       body: Column(children: <Widget>[
         _searchBox(),
@@ -35,19 +32,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _shareButton() {
-    return IconButton(
-      color: kReallyGrey,
-      icon: const Icon(Icons.share),
-      onPressed: () {
-        // share page.
-      },
-      iconSize: 30.0,
-    );
-  }
-
   Widget _searchBox() {
     final size = MediaQuery.of(context).size;
+
     return SizedBox(
         height: size.height * 0.2,
         child: Stack(
