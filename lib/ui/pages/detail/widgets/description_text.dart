@@ -17,9 +17,8 @@ class DescriptionText extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 25.0),
-          child: _buildingDescriptionText(),
-        ),
+            padding: const EdgeInsets.only(top: 25.0),
+            child: _buildingDescriptionText()),
       ],
     );
   }
@@ -76,14 +75,15 @@ class DescriptionText extends StatelessWidget {
   }
 
   Widget _heightValue() {
-    return Text(height.toUpperCase(),
-        style: const TextStyle(
+    return Text(
+      height.toUpperCase(),
+      style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontStyle: FontStyle.italic,
           fontFamily: 'CircularStd',
           fontSize: 21.0,
-          color: kLightGrey,
-        ));
+          color: kLightGrey),
+    );
   }
 
   Widget _heightTitle() {
@@ -97,14 +97,15 @@ class DescriptionText extends StatelessWidget {
   }
 
   Widget _weightValue() {
-    return Text(weight.toUpperCase(),
-        style: const TextStyle(
+    return Text(
+      weight.toUpperCase(),
+      style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontStyle: FontStyle.italic,
           fontFamily: 'CircularStd',
           fontSize: 21.0,
-          color: kLightGrey,
-        ));
+          color: kLightGrey),
+    );
   }
 
   Widget _weightTitle() {
@@ -118,14 +119,15 @@ class DescriptionText extends StatelessWidget {
   }
 
   Widget _typeValue() {
-    return Text(type.toUpperCase(),
-        style: const TextStyle(
+    return Text(
+      type.toUpperCase(),
+      style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontStyle: FontStyle.italic,
           fontFamily: 'CircularStd',
           fontSize: 21.0,
-          color: kLightGrey,
-        ));
+          color: kLightGrey),
+    );
   }
 
   Widget _typeTitle() {

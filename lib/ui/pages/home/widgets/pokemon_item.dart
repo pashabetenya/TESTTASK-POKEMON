@@ -3,15 +3,17 @@ import 'package:application/ui/pages/home/index.dart';
 class PokemonItem extends StatelessWidget {
   final String name;
   final String type;
+  final String height;
+  final String weight;
   final int numb;
-  final Function() function;
 
   const PokemonItem({
     Key? key,
     required this.name,
     required this.type,
     required this.numb,
-    required this.function,
+    required this.height,
+    required this.weight,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,21 @@ class PokemonItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: InkWell(
-          onTap: function,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailPage(
+                  name: name,
+                  type: type,
+                  numb: numb,
+                  height: height,
+                  weight: weight,
+                  id: numb,
+                ),
+              ),
+            );
+          },
           child: Column(
             children: <Widget>[
               _buildingPokemonItem(),

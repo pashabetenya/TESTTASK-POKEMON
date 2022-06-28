@@ -14,6 +14,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -21,20 +22,18 @@ class _SearchState extends State<Search> {
       left: 0,
       right: 0,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20.0),
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0),
         height: 54.0,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20.0),
-          boxShadow: [
-            BoxShadow(
-              offset: const Offset(0, 10.0),
-              blurRadius: 50.0,
-              color: kReallyGrey.withOpacity(0.25),
-            ),
-          ],
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0, 10.0),
+                  blurRadius: 50.0,
+                  color: kReallyGrey.withOpacity(0.25)),
+            ]),
         child: _textSearchForm(),
       ),
     );
