@@ -1,7 +1,8 @@
 # TESTTASK-POKEMON.
 
-This application is as a project on a summer internship from the university, after which - can be applied for an internship program (if, of course, the project and my knowledge to date like).
-I would like to enroll in the internship program, where there will be the necessary guys who will be able to share their experiences and help me develop in this direction.
+This application is as a project on a summer internship from the university, after which — can be applied for an internship program (if, of course, the project and my knowledge to date like). Still, I would like to enroll in an internship program, where I can learn and gain new knowledge from experienced developers, as well as experience in mobile application development. 
+I am aware of the responsibility and the fact that I will have to learn a lot and it will take a lot of time.
+
 
 ## That about the project (company requirements). 
 
@@ -61,28 +62,41 @@ Result:
 
 
 
-## What I supposedly accomplished, and what is planned in the future.
+## What about the project, and what ended up being accomplished.
 
 - Design:
    - Home page;
    - Detail;
 - REST Api (there is a check for some errors).
 - Connected a package that allows you to cache data, that is received from a request from the server.
-   - TRIED TO CONNECT THE DATABASE AS A HIVE-DB. BUT SOMETHING DID NOT WORK. IN THE FUTURE I WANT TO UNDERSTAND THIS ISSUE AND TRY TO CONNECT MORE.
-- Made a search in my app where you can save time and find the right Pokémon in a matter of time.
-- Added an icon for the app, and a splash screen when you open the app for the first time.
+  - TRIED TO CONNECT THE DATABASE AS A HIVE-DB. BUT SOMETHING DID NOT WORK. IN THE FUTURE I WANT TO UNDERSTAND THIS ISSUE AND TRY TO CONNECT MORE.
+  - I'M STILL WORKING ON IT AT THE MOMENT, AND I'M TRYING TO PLUG IT IN.
+- A search was prescribed. 
+- Added an icon for the app, and a splash page.
+- Architecture: Vanilla.
 
-Due to the fact that the practice is coming to an end, had time for this.
-
-
-Eventually I'm going to continue studying, and if I get into an internship program, the process will speed up. The direction is new, and it's very difficult to talk to someone and find help in training.
-On a good note, I'd like to see it work out. I realize the responsibility and understand it, I will try my best.
+Due to the fact that the other day the practice is coming to an end, it only had time to figure it out and write it in the project. 
+Eventually I would like to finish writing the project, and I'm going to keep working on it. Over time, some of what I've written will change for the better, and some new things will be added.
 
 In the future it is planned (these are essentially the defaults, and then we'll see):
+- To improve in terms of writing what I was working on before.
+- Prescribe a new section — favorites, where you can save or delete a pokémon.
 - Prescribe the architecture.
 - Learn how to prescribe different tests.
-- Write the "favorites" section.
+- Adding a database.
 - Change the interface language.
+- Authorizing an account.
+- I'm also going to look into a couple of packages and plug them in.
 
 I wrote it primitively and didn't include any packages. This is all so that people who will be looking at this project - could catch my logic and make the right choice in terms of evaluation.
 
+
+## Testing.
+
+The development was done in the Visual Studio Code development environment on a laptop with Windows 10 (Home version) operating system. And at the same time was tested on a cell phone Xiaomi Red Note 10S.
+To run the application on your device, you need to install:
+- Dart SDK. This can be done from the official website:
+  - https://dart.dev/get-dart.
+- Flutter. This can be done from the official website:
+  - https://docs.flutter.dev/get-started/install.
+- And have a device that can connect to your device and make this app run. As a last resort, install a virtual device and all necessary extension packages.
