@@ -1,5 +1,4 @@
 import 'package:application/ui/pages/home/index.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,13 +8,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Box<Data> poke;
+  List<Data> data = [];
+  String keyboard = '';
 
   @override
   void initState() {
     super.initState();
 
-    PokemonRepository().fetchPokemon();
+    init();
+  }
+
+  Future init() async {
+    final data = await PokemonRepository().fetchPokemon(keyboard);
+
+    setState(() => this.data = data);
+  }
+
+  Future search(String query) async {
+    final data = await PokemonRepository().fetchPokemon(query);
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      keyboard = query;
+      this.data = data;
+    });
   }
 
   @override
@@ -41,9 +60,9 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             _parametersBox(),
             _headerTextBox(),
-            const Search(
-                // onChanged: search,
-                ),
+            Search(
+              onChanged: search,
+            ),
           ],
         ));
   }
@@ -71,28 +90,23 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildList() {
     return Expanded(
-      child: ValueListenableBuilder(
-          valueListenable: Hive.box<Data>('data_db').listenable(),
-          builder: (context, Box<Data> data, _) {
-            poke = data;
-            return GridView.builder(
-              itemCount: 1,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.8,
-              ),
-              itemBuilder: (context, index) {
-                final model = data.getAt(index) as Data;
-                return PokemonItem(
-                  name: model.name,
-                  type: model.type[0],
-                  numb: model.id,
-                  height: model.height,
-                  weight: model.weight,
-                );
-              },
-            );
-          }),
+      child: GridView.builder(
+        itemCount: data.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8,
+        ),
+        itemBuilder: (context, index) {
+          final model = data[index];
+          return PokemonItem(
+            name: model.name,
+            height: model.height,
+            weight: model.weight,
+            numb: model.id,
+            type: model.type[0],
+          );
+        },
+      ),
     );
   }
 }
