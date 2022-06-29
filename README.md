@@ -81,7 +81,12 @@ Eventually I would like to finish writing the project, and I'm going to keep wor
 In the future it is planned (these are essentially the defaults, and then we'll see):
 - To improve in terms of writing what I was working on before.
 - Prescribe a new section — favorites, where you can save or delete a pokémon.
-- Prescribe the architecture.
+- Prescribe the architecture:
+  - BLoC + Freezed, providers;
+  - Maybe GetX..
+  - Dependency Injection;
+- Local notifications..
+- Navigation.
 - Learn how to prescribe different tests.
 - Adding a database.
 - Change the interface language.
