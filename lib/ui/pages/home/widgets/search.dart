@@ -2,7 +2,6 @@ import 'package:application/ui/pages/home/index.dart';
 
 class Search extends StatefulWidget {
   final ValueChanged<String> onChanged;
-
   const Search({
     Key? key,
     required this.onChanged,
