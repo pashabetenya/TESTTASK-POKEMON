@@ -1,31 +1,30 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:application/core/database/hive_db/database.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/rendering.dart';
-
-import 'package:application/core/models/pokemon.dart';
 
 class PokemonRepository {
   final Dio _dio = Dio();
   final _baseUrl =
       'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
 
-  Future<List<Data>> fetchPokemon(String query) async {
+  Future fetchPokemon() async {
     try {
       Response response = await _dio.get(_baseUrl);
 
       if (response.statusCode == 200) {
-        final local = jsonDecode(response.data);
+        final answer =
+            (jsonDecode(response.data) as Map).cast<String, dynamic>();
+        // ignore: avoid_print
+        print('RESULT ANSWER: $answer');
 
-        final answer = local['pokemon'] as List;
+        final result = (answer['pokemon'] as List).cast<Map>();
+        // ignore: avoid_print
+        print('RESULT: $result');
 
-        return answer.map((e) => Data.fromJson(e)).where((searching) {
-          final title = searching.name.toLowerCase();
-          final search = query.toLowerCase();
-
-          return title.contains(search);
-        }).toList();
+        return Database().cacheData(result);
       } else {
         throw Exception('Failed to load..');
       }

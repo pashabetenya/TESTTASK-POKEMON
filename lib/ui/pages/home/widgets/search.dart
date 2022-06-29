@@ -1,11 +1,8 @@
 import 'package:application/ui/pages/home/index.dart';
 
 class Search extends StatefulWidget {
-  final ValueChanged<String> onChanged;
-
   const Search({
     Key? key,
-    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -45,7 +42,6 @@ class _SearchState extends State<Search> {
         Expanded(
           child: TextField(
               controller: controller,
-              onChanged: widget.onChanged,
               decoration: const InputDecoration(
                 hintText: 'E.g. Pikachu..',
                 enabledBorder: InputBorder.none,
