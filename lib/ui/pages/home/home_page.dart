@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     setState(() => this.data = data);
   }
 
+  // A feature that allows you to do a search.
   Future search(String query) async {
     final data = await PokemonRepository().fetchPokemon(query);
 

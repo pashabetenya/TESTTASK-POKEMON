@@ -13,6 +13,9 @@ class PokemonRepository {
     final cache = await APICacheManager().isAPICacheKeyExist('data');
 
     if (!cache) {
+      // This is the section that makes the request,
+      // when you connect.
+
       try {
         final response = await http.get(
           Uri.https(
@@ -33,6 +36,8 @@ class PokemonRepository {
 
           final answer = local['pokemon'] as List;
 
+          // This function is for making the search work.
+
           return answer.map((e) => Data.fromJson(e)).where((searching) {
             final title = searching.name.toLowerCase();
             final search = query.toLowerCase();
@@ -48,11 +53,16 @@ class PokemonRepository {
         throw Exception('Failed to load..');
       }
     } else {
+      // This is the section that handles the data,
+      // that is in the cache provided there is no connection.
+
       try {
         final data = await APICacheManager().getCacheData('data');
         final answer = jsonDecode(data.syncData);
 
         final cache = answer['pokemon'] as List;
+
+        // This function is for making the search work.
 
         return cache.map((e) => Data.fromJson(e)).where((searching) {
           final title = searching.name.toLowerCase();
