@@ -45,14 +45,27 @@ Result:
 </table> -->
 <table>
   <tr>
-    <th>Home Page</th>
-    <th>Detail</th>
-    <th>Search</th>
+    <th>Login Page</th>
+    <th>Forgot Password</th>
+    <th>Login/th>
   </tr>
   <tr>
     <td><img src='photos/photo1st.png'/></td>
     <td><img src='photos/photo2nd.png'/></td>
     <td><img src='photos/photo3th.png'/></td>
+  </tr>
+  
+</table>
+<table>
+  <tr>
+    <th>Home Page</th>
+    <th>Detail Page</th>
+    <th>Search</th>
+  </tr>
+  <tr>
+    <td><img src='photos/photo4th.png'/></td>
+    <td><img src='photos/photo5th.png'/></td>
+    <td><img src='photos/photo6th.png'/></td>
   </tr>
   
 </table>
