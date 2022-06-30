@@ -47,12 +47,12 @@ Result:
   <tr>
     <th>Login Page</th>
     <th>Forgot Password</th>
-    <th>Login/th>
+    <th>Register Page</th>
   </tr>
   <tr>
-    <td><img src='photos/photo1st.png'/></td>
-    <td><img src='photos/photo2nd.png'/></td>
-    <td><img src='photos/photo3th.png'/></td>
+    <td><img src='photos/LOGIN.jpg'/></td>
+    <td><img src='photos/FORGOT.jpg'/></td>
+    <td><img src='photos/REGISTER.jpg'/></td>
   </tr>
   
 </table>
@@ -63,9 +63,9 @@ Result:
     <th>Search</th>
   </tr>
   <tr>
-    <td><img src='photos/photo4th.png'/></td>
-    <td><img src='photos/photo5th.png'/></td>
-    <td><img src='photos/photo6th.png'/></td>
+    <td><img src='photos/HOME.jpg'/></td>
+    <td><img src='photos/DETAIL.jpg'/></td>
+    <td><img src='photos/SEARCH.jpg'/></td>
   </tr>
   
 </table>
