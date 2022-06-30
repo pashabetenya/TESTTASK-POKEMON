@@ -10,7 +10,7 @@ class Application extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }

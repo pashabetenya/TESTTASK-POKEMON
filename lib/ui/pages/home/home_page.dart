@@ -83,8 +83,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _headerTextBox() {
     return const TitleText(
-        titleText1st: 'Welcome to the',
-        titleText2nd: 'handbook!',
+        titleText1st: 'Welcome',
+        titleText2nd: 'to HANDBOOK!',
         description: 'Who are you looking for?');
   }
 
