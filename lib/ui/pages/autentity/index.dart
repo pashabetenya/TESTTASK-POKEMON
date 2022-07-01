@@ -16,3 +16,10 @@ export 'package:application/ui/pages/autentity/widgets/fields/password_text_form
 
 // link to packages from the packages.
 export 'package:flutter/material.dart';
+
+// link to packages from the pages.
+export 'package:application/ui/pages/home/home_page.dart';
+
+// link to packages from the services.
+export 'package:application/core/services/dependency_service.dart';
+export 'package:application/core/services/navigation_service.dart';

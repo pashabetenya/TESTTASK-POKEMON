@@ -10,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildLoginForm() {
     return Form(
+      key: _formKey,
       child: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -69,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
       child: TextButton(
         onPressed: () {
           // Forgot password page.
+          navigationService.navigateTo(Pages.forgot);
         },
         child: const Text(
           'Forgot password',
@@ -83,7 +87,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildLoginButton() {
     return PrimaryButton(
       onPressed: () {
-        // Login page.
+        // Home page.
+        navigationService.navigateTo(Pages.home);
       },
       title: 'Login',
     );
@@ -93,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
     return QuestionPanel(
       onPressed: () {
         // Register page.
+        navigationService.navigateTo(Pages.register);
       },
       description: 'Don`t have an account?',
       title: 'Register!',

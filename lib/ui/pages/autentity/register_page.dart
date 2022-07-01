@@ -10,6 +10,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildRegisterForm() {
     return Form(
+      key: _formKey,
       child: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -65,6 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
       title: 'Register',
       onPressed: () {
         // Home page.
+        navigationService.navigateTo(Pages.home);
       },
     );
   }
@@ -73,6 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return QuestionPanel(
         onPressed: () {
           // Login page.
+          navigationService.navigateTo(Pages.login);
         },
         description: 'Already have an account?',
         title: 'Login!');

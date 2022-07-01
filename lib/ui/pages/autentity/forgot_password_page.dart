@@ -10,6 +10,8 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +31,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   Widget _buildForgotPasswordForm() {
     return Form(
+      key: _formKey,
       child: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -61,6 +64,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return PrimaryButton(
         onPressed: () {
           // Login page.
+          navigationService.navigateTo(Pages.login);
         },
         title: 'Go back',
         color: const Color(0xFFA9A9A9));

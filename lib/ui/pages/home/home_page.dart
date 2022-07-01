@@ -41,13 +41,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kGreen,
         elevation: 0.00,
+        actions: [
+          _shareButton(),
+        ],
       ),
       body: Column(children: <Widget>[
         _searchBox(),
         _buildList(),
       ]),
+    );
+  }
+
+  Widget _shareButton() {
+    return IconButton(
+      color: kReallyGrey,
+      icon: const Icon(Icons.share),
+      onPressed: () {
+        // share page.
+      },
+      iconSize: 30.0,
     );
   }
 

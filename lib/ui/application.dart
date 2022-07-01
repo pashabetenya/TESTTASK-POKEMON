@@ -1,4 +1,5 @@
 import 'package:application/ui/index.dart';
+import 'package:get/get.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class Application extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       home: const LoginPage(),
+      navigatorKey: Get.key,
     );
   }
 }
