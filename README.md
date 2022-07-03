@@ -85,7 +85,9 @@ Result:
   - TRIED TO CONNECT THE DATABASE AS A HIVE-DB. BUT SOMETHING DID NOT WORK. IN THE FUTURE I WANT TO UNDERSTAND THIS ISSUE AND TRY TO CONNECT MORE.
   - I'M STILL WORKING ON IT AT THE MOMENT, AND I'M TRYING TO PLUG IT IN.
 - A search was prescribed. 
-- Added an icon for the app, and a splash page.
+- Added an icon for the app, and a splash page. (On the virtual device works with some bug, I do not fully understand why, but on the device - everything is fine).
+- Authorization an account at the expense of firebase service was prescribed. (Initially, everything worked, but there is also a bug. On a separate branch described what the problem is).
+- Navigation.
 - Architecture: Vanilla.
 
 Due to the fact that the other day the practice is coming to an end, it only had time to figure it out and write it in the project. 
@@ -99,11 +101,9 @@ In the future it is planned (these are essentially the defaults, and then we'll 
   - Maybe GetX..
   - Dependency Injection;
 - Local notifications..
-- Navigation.
 - Learn how to prescribe different tests.
 - Adding a database.
 - Change the interface language.
-- Authorizing an account.
 - I'm also going to look into a couple of packages and plug them in.
 
 I wrote it primitively and didn't include any packages. This is all so that people who will be looking at this project - could catch my logic and make the right choice in terms of evaluation.
