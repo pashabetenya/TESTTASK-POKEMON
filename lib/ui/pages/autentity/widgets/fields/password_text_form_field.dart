@@ -10,7 +10,7 @@ class PasswordTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PasswordTextFormFieldState createState() => _PasswordTextFormFieldState();
+  State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
 }
 
 class _PasswordTextFormFieldState extends State<PasswordTextFormField> {

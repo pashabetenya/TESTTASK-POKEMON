@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -30,15 +30,9 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> login() async {
     try {
-      final userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
       Fluttertoast.showToast(
         msg: 'Logged successfully.',
       );
-      print(userCredential);
       navigationService.navigateTo(Pages.home);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

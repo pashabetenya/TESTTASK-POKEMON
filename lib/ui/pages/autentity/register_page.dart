@@ -8,7 +8,7 @@ class RegisterPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -29,31 +29,23 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> registration() async {
-    if (password != null) {
-      try {
-        final userCredential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
+    try {
+      Fluttertoast.showToast(
+        msg: 'Registered successfully.',
+      );
+      navigationService.navigateTo(Pages.home);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
         Fluttertoast.showToast(
-          msg: 'Registered successfully.',
+          msg: 'The password provided is too weak.',
         );
-        print(userCredential);
-        navigationService.navigateTo(Pages.home);
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          Fluttertoast.showToast(
-            msg: 'The password provided is too weak.',
-          );
-        } else if (e.code == 'email-already-in-use') {
-          Fluttertoast.showToast(
-            msg: 'The account already exists for that e-mail.',
-          );
-        }
-      } catch (e) {
-        print(e);
+      } else if (e.code == 'email-already-in-use') {
+        Fluttertoast.showToast(
+          msg: 'The account already exists for that e-mail.',
+        );
       }
+    } catch (e) {
+      debugPrint('Error: ${e.toString()}');
     }
   }
 

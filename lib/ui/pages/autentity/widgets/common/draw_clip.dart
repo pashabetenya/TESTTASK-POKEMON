@@ -2,7 +2,9 @@ import 'package:application/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class DrawClip extends StatelessWidget {
-  const DrawClip({Key? key}) : super(key: key);
+  const DrawClip({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
