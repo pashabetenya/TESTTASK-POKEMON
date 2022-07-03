@@ -1,4 +1,6 @@
 import 'package:application/ui/pages/autentity/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -11,6 +13,45 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+
+  String email = '';
+  String password = '';
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
+  Future<void> login() async {
+    try {
+      final userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Fluttertoast.showToast(
+        msg: 'Logged successfully.',
+      );
+      print(userCredential);
+      navigationService.navigateTo(Pages.home);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(
+          msg: 'No user found for that e-mail.',
+        );
+      } else if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(
+          msg: 'Wrong password provided for that user.',
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +97,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildInputForm() {
     return Column(
-      children: const <Widget>[
-        EmailTextFormField(),
-        SizedBox(
+      children: <Widget>[
+        EmailTextFormField(
+          textController: emailController,
+        ),
+        const SizedBox(
           height: 5,
         ),
-        PasswordTextFormField(),
+        PasswordTextFormField(
+          textController: passwordController,
+        ),
       ],
     );
   }
@@ -71,7 +116,6 @@ class _LoginPageState extends State<LoginPage> {
       alignment: Alignment.topRight,
       child: TextButton(
         onPressed: () {
-          // Forgot password page.
           navigationService.navigateTo(Pages.forgot);
         },
         child: const Text(
@@ -87,8 +131,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildLoginButton() {
     return PrimaryButton(
       onPressed: () {
-        // Home page.
-        navigationService.navigateTo(Pages.home);
+        if (_formKey.currentState!.validate()) {
+          setState(
+            () {
+              email = emailController.text;
+              password = passwordController.text;
+            },
+          );
+          login();
+        }
       },
       title: 'Login',
     );
@@ -97,7 +148,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildQuestionPanel() {
     return QuestionPanel(
       onPressed: () {
-        // Register page.
         navigationService.navigateTo(Pages.register);
       },
       description: 'Don`t have an account?',

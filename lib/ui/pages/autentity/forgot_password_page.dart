@@ -1,4 +1,6 @@
 import 'package:application/ui/pages/autentity/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({
@@ -11,6 +13,32 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final emailContoller = TextEditingController();
+
+  @override
+  void dispose() {
+    emailContoller.dispose();
+
+    super.dispose();
+  }
+
+  String email = '';
+
+  Future<void> send() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      Fluttertoast.showToast(
+        msg: 'Password reset e-mail has been sent.',
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(
+          msg: 'No user found for that e-mail.',
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +68,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
             child: Column(
               children: <Widget>[
-                const EmailTextFormField(),
+                EmailTextFormField(
+                  textController: emailContoller,
+                ),
                 const SizedBox(height: 10.0),
                 _emailDescriptionText(),
                 const SizedBox(height: 40.0),
@@ -55,15 +85,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   Widget _buildSendButton() {
     return PrimaryButton(
+      onPressed: () async {
+        if (_formKey.currentState!.validate()) {
+          setState(
+            () {
+              email = emailContoller.text;
+            },
+          );
+          send();
+        }
+      },
       title: 'Send',
-      onPressed: () {},
     );
   }
 
   Widget _buildGoBackButton() {
     return PrimaryButton(
         onPressed: () {
-          // Login page.
           navigationService.navigateTo(Pages.login);
         },
         title: 'Go back',

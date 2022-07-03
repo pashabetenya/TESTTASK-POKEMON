@@ -82,7 +82,7 @@ class PokemonItem extends StatelessWidget {
           style: const TextStyle(
             fontFamily: 'Gotham',
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,
+            fontSize: 15.0,
             color: kReallyGrey,
           )),
     );

@@ -1,4 +1,6 @@
 import 'package:application/ui/pages/autentity/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
@@ -11,6 +13,49 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+
+  String email = '';
+  String password = '';
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
+  Future<void> registration() async {
+    if (password != null) {
+      try {
+        final userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        Fluttertoast.showToast(
+          msg: 'Registered successfully.',
+        );
+        print(userCredential);
+        navigationService.navigateTo(Pages.home);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          Fluttertoast.showToast(
+            msg: 'The password provided is too weak.',
+          );
+        } else if (e.code == 'email-already-in-use') {
+          Fluttertoast.showToast(
+            msg: 'The account already exists for that e-mail.',
+          );
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +98,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildInputForm() {
     return Column(
-      children: const <Widget>[
-        EmailTextFormField(),
-        PasswordTextFormField(),
-        SizedBox(
+      children: <Widget>[
+        EmailTextFormField(
+          textController: emailController,
+        ),
+        PasswordTextFormField(
+          textController: passwordController,
+        ),
+        const SizedBox(
           height: 5.0,
         ),
       ],
@@ -65,18 +114,24 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildRegisterButton() {
     return PrimaryButton(
-      title: 'Register',
       onPressed: () {
-        // Home page.
-        navigationService.navigateTo(Pages.home);
+        if (_formKey.currentState!.validate()) {
+          setState(
+            () {
+              email = emailController.text;
+              password = passwordController.text;
+            },
+          );
+          registration();
+        }
       },
+      title: 'Register',
     );
   }
 
   Widget _buildQuestionPanel() {
     return QuestionPanel(
         onPressed: () {
-          // Login page.
           navigationService.navigateTo(Pages.login);
         },
         description: 'Already have an account?',

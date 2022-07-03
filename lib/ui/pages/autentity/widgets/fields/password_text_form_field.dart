@@ -2,8 +2,11 @@ import 'package:application/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class PasswordTextFormField extends StatefulWidget {
+  final TextEditingController textController;
+
   const PasswordTextFormField({
     Key? key,
+    required this.textController,
   }) : super(key: key);
 
   @override
@@ -14,6 +17,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.textController,
       cursorColor: Colors.grey,
       obscureText: true,
       validator: (value) {

@@ -7,7 +7,7 @@ class DrawClip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       child: Stack(
         children: <Widget>[
           ClipPath(
