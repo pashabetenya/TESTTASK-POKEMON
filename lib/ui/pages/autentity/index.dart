@@ -16,6 +16,8 @@ export 'package:application/ui/pages/autentity/widgets/fields/password_text_form
 
 // link to packages from the packages.
 export 'package:flutter/material.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:fluttertoast/fluttertoast.dart';
 
 // link to packages from the pages.
 export 'package:application/ui/pages/home/home_page.dart';

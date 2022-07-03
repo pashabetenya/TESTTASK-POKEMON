@@ -1,6 +1,4 @@
 import 'package:application/ui/pages/autentity/index.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
