@@ -1,5 +1,3 @@
-// ignore_for_file: dead_code
-
 import 'package:flutter/material.dart';
 
 // INTERFACE PALLET.
@@ -47,67 +45,49 @@ const kWater = Color.fromARGB(255, 157, 183, 245);
 
 // COLOR ITEM.
 Color colorItem(String type) {
-  // ignore: unnecessary_null_comparison
-  if (type == null) {
+  try {
+    switch (type) {
+      case 'Bug':
+        return kBug;
+      case 'Dark':
+        return kDark;
+      case 'Dragon':
+        return kDragon;
+      case 'Electric':
+        return kElectric;
+      case 'Fairy':
+        return kFairy;
+      case 'Fighting':
+        return kFairy;
+      case 'Fire':
+        return kFairy;
+      case 'Flying':
+        return kFlying;
+      case 'Ghost':
+        return kGhost;
+      case 'Grass':
+        return kGrass;
+      case 'Ground':
+        return kGround;
+      case 'Ice':
+        return kIce;
+      case 'Normal':
+        return kNormal;
+      case 'Poison':
+        return kPoison;
+      case 'Psychic':
+        return kPsychic;
+      case 'Rock':
+        return kRock;
+      case 'Steel':
+        return kSteel;
+      case 'Water':
+        return kWater;
+      default:
+        return kReallyGrey;
+    }
+  } catch (e) {
     return kReallyGrey;
-  }
-  switch (type) {
-    case 'Bug':
-      return kBug;
-      break;
-    case 'Dark':
-      return kDark;
-      break;
-    case 'Dragon':
-      return kDragon;
-      break;
-    case 'Electric':
-      return kElectric;
-      break;
-    case 'Fairy':
-      return kFairy;
-      break;
-    case 'Fighting':
-      return kFairy;
-      break;
-    case 'Fire':
-      return kFairy;
-      break;
-    case 'Flying':
-      return kFlying;
-      break;
-    case 'Ghost':
-      return kGhost;
-      break;
-    case 'Grass':
-      return kGrass;
-      break;
-    case 'Ground':
-      return kGround;
-      break;
-    case 'Ice':
-      return kIce;
-      break;
-    case 'Normal':
-      return kNormal;
-      break;
-    case 'Poison':
-      return kPoison;
-      break;
-    case 'Psychic':
-      return kPsychic;
-      break;
-    case 'Rock':
-      return kRock;
-      break;
-    case 'Steel':
-      return kSteel;
-      break;
-    case 'Water':
-      return kWater;
-      break;
-    default:
-      return kReallyGrey;
   }
 }
 

@@ -1,7 +1,9 @@
 import 'package:application/ui/pages/home/index.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -42,13 +44,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kGreen,
         elevation: 0.00,
+        actions: [
+          _shareButton(),
+        ],
       ),
       body: Column(children: <Widget>[
         _searchBox(),
         _buildList(),
       ]),
+    );
+  }
+
+  Widget _shareButton() {
+    return IconButton(
+      color: kReallyGrey,
+      icon: const Icon(Icons.share),
+      onPressed: () {
+        // share page.
+      },
+      iconSize: 30.0,
     );
   }
 
@@ -84,8 +101,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _headerTextBox() {
     return const TitleText(
-        titleText1st: 'Welcome to the',
-        titleText2nd: 'handbook!',
+        titleText1st: 'Welcome',
+        titleText2nd: 'to HANDBOOK!',
         description: 'Who are you looking for?');
   }
 
