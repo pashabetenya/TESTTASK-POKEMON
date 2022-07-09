@@ -86,7 +86,7 @@ Result:
   - I'M STILL WORKING ON IT AT THE MOMENT, AND I'M TRYING TO PLUG IT IN.
 - A search was prescribed. 
 - Added an icon for the app, and a splash page. (On the virtual device works with some bug, I do not fully understand why, but on the device - everything is fine).
-- Authorization an account at the expense of firebase service was prescribed. (Initially, everything worked, but there is also a bug. On a separate branch described what the problem is).
+- Authorization an account at the expense of firebase service was prescribed.
 - Navigation.
 - Architecture: Vanilla.
 
