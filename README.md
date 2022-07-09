@@ -51,8 +51,8 @@ Result:
   </tr>
   <tr>
     <td><img src='photos/LOGIN.jpg'/></td>
-    <td><img src='photos/REGISTER.jpg'/></td>
     <td><img src='photos/FORGOT.jpg'/></td>
+    <td><img src='photos/REGISTER.jpg'/></td>
   </tr>
   
 </table>
