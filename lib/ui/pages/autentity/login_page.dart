@@ -28,6 +28,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> login() async {
     try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
       Fluttertoast.showToast(
         msg: 'Logged successfully.',
       );

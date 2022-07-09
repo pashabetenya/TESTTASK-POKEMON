@@ -28,6 +28,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> registration() async {
     try {
+      final userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
       Fluttertoast.showToast(
         msg: 'Registered successfully.',
       );
