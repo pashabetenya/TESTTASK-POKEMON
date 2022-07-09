@@ -45,9 +45,9 @@ Result:
 </table> -->
 <table>
   <tr>
-    <th>Login Page</th>
-    <th>Forgot Password</th>
-    <th>Register Page</th>
+    <th>Page #1</th>
+    <th>Page #2</th>
+    <th>Page #3</th>
   </tr>
   <tr>
     <td><img src='photos/LOGIN.jpg'/></td>
@@ -58,14 +58,14 @@ Result:
 </table>
 <table>
   <tr>
-    <th>Home Page</th>
-    <th>Detail Page</th>
-    <th>Search</th>
+    <th>Page #4</th>
+    <th>Page #4</th>
+    <th>Page #5</th>
   </tr>
   <tr>
     <td><img src='photos/HOME.jpg'/></td>
-    <td><img src='photos/DETAIL.jpg'/></td>
     <td><img src='photos/SEARCH.jpg'/></td>
+    <td><img src='photos/DETAIL.jpg'/></td>
   </tr>
   
 </table>
@@ -86,7 +86,7 @@ Result:
   - I'M STILL WORKING ON IT AT THE MOMENT, AND I'M TRYING TO PLUG IT IN.
 - A search was prescribed. 
 - Added an icon for the app, and a splash page. (On the virtual device works with some bug, I do not fully understand why, but on the device - everything is fine).
-- Authorization an account at the expense of firebase service was prescribed. (Initially, everything worked, but there is also a bug. On a separate branch described what the problem is).
+- Authorization an account at the expense of firebase service was prescribed.
 - Navigation.
 - Architecture: Vanilla.
 
